@@ -12,13 +12,17 @@ gem 'rock_scissor_papper'
 ```
 
 And then execute:
-
+```bash
     $ bundle
-
+```
 Or install it yourself as:
-
-    $ gem install rockScissorPapper
-
+```bash
+    $ gem install rock_scissor_papper
+```
+make database
+```bash
+    $ rails g rock_scissor_papper
+```
 ## Usage
 
 TODO: Write usage instructions here
@@ -31,7 +35,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rockScissorPapper.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Karoid/rockScissorPapper.
 
 
 ## License
