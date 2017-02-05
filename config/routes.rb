@@ -1,9 +1,9 @@
-RockScissorPapper::Engine.routes.draw do
+RockScissorsPaper::Engine.routes.draw do
   root :to => 'home#index'
 end
 
-if RockScissorPapper.automatic_routes_mount
+if RockScissorsPaper.automatic_routes_mount
   Rails.application.routes.draw do
-    mount_rock_scissor_papper_routes
+    mount_rock_scissors_papper_routes
   end
 end

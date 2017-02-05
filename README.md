@@ -1,4 +1,4 @@
-# RockScissorPapper
+# RockScissorsPaper
 
 This is gem that creates rock,scissor,papper page in your webpage
 you need devise gem, and user model!
@@ -8,7 +8,7 @@ you need devise gem, and user model!
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rock_scissor_papper'
+gem 'rock_scissors_paper'
 ```
 
 And then execute:
@@ -17,7 +17,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install rockScissorPapper
+    $ gem install rockScissorsPaper
 
 ## Usage
 
@@ -31,7 +31,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rockScissorPapper.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rockScissorsPaper.
 
 
 ## License
