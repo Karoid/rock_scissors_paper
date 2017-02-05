@@ -1,5 +1,5 @@
 module RockScissorsPaper
-  class HomeController < Rails::ApplicationController
+  class HomeController < ::ApplicationController
 
     def index
     end
