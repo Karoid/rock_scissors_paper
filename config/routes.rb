@@ -4,6 +4,6 @@ end
 
 if RockScissorsPaper.automatic_routes_mount
   Rails.application.routes.draw do
-    mount_rock_scissors_papper_routes
+    mount_rock_scissors_paper_routes
   end
 end

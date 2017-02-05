@@ -18,4 +18,5 @@ module RockScissorsPaper
 end
 
 require "rock_scissors_paper/version"
+require "rock_scissors_paper/engine"
 require_relative "rails/routes"

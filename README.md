@@ -13,15 +13,15 @@ gem 'rock_scissors_paper'
 
 And then execute:
 ```bash
-    $ bundle
+$ bundle
 ```
 Or install it yourself as:
 
-    $ gem install rockScissorsPaper
+$ gem install rockScissorsPaper
 
 make database
 ```bash
-    $ rails g rock_scissors_paper
+$ rails g rock_scissors_paper
 ```
 ## Usage
 
@@ -35,11 +35,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-<<<<<<< HEAD
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rockScissorsPaper.
-=======
-Bug reports and pull requests are welcome on GitHub at https://github.com/Karoid/rockScissorPapper.
->>>>>>> 8194327d6dc1570e6355e4a28c0d3a1f6d0fe414
 
 
 ## License
