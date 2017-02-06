@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'rock_scissor_papper/version'
+require 'rock_scissors_paper/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "rock_scissor_papper"
-  spec.version       = RockScissorPapper::VERSION
+  spec.name          = "rock_scissors_paper"
+  spec.version       = RockScissorsPaper::VERSION
   spec.authors       = ["Karoid"]
   spec.email         = ["shj5508@naver.com"]
 

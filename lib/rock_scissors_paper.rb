@@ -1,6 +1,6 @@
 require "rails"
 
-module RockScissorPapper
+module RockScissorsPaper
 
   # automatic engine routes mouting
   mattr_accessor :automatic_routes_mount
@@ -12,10 +12,11 @@ module RockScissorPapper
   end
 
   class Engine < ::Rails::Engine
-    isolate_namespace RockScissorPapper
+    isolate_namespace RockScissorsPaper
   end
 
 end
 
-require "rock_scissor_papper/version"
+require "rock_scissors_paper/version"
+require "rock_scissors_paper/engine"
 require_relative "rails/routes"
