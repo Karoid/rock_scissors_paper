@@ -19,10 +19,11 @@ Or install it yourself as:
 ```bash
     $ gem install rock_scissor_papper
 ```
-make database
+make database for rock_scissor_papper!
 ```bash
-    $ rails g rock_scissor_papper
+    $ rails g rock_scissor_papper MODEL
 ```
+this will make model for the game
 ## Usage
 
 TODO: Write usage instructions here
