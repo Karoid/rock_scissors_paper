@@ -4,7 +4,7 @@ module RockScissorsPaper
       source_root File.expand_path('../templates', __FILE__)
       hook_for :orm
       def generate_rock_scissors_paper
-        copy_file 'migrate.rb', 'db/migrate/rock_scissors_paper.rb'
+        copy_file 'initialize.rb', 'config/initializers/rock_scissors_paper.rb'
       end
     end
   end

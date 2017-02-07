@@ -2,7 +2,7 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'rock_scissors_paper/version'
-
+#다음부터는 Enginex gem 을 써보도록 하자ㅠ
 Gem::Specification.new do |spec|
   spec.name          = "rock_scissors_paper"
   spec.version       = RockScissorsPaper::VERSION

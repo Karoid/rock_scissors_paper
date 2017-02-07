@@ -17,11 +17,11 @@ $ bundle
 ```
 Or install it yourself as:
 ```bash
-    $ gem install rock_scissor_papper
+$ gem install rock_scissor_papper
 ```
 make database for rock_scissor_papper!
 ```bash
-    $ rails g rock_scissor_papper MODEL
+$ rails g rock_scissors_paper MODEL
 ```
 this will make model for the game
 ## Usage

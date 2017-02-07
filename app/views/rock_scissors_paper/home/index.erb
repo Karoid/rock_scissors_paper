@@ -1,33 +1,68 @@
 <h1>가위바위보</h1>
-<div class="gamebox">
-  <div class="score_header">
-    보유 point: , 참가 point: , 잔여횟수: , 오늘결과:
-  </div>
-  <div class="game_content">
-    <%= image_tag 'rock_scissors_paper/rock.svg', class: 'rsp'%>
-    <%= image_tag 'rock_scissors_paper/scissor.svg', class: 'rsp'%>
-    <%= image_tag 'rock_scissors_paper/paper.svg', class: 'rsp'%>
-  </div>
+<div id="svg">
 </div>
-
-<style>
-.gamebox{
-  width:100%;
-  height: 700px;
-  background-color: pink
-}
-.score_header{
-  padding: 20px 0;
-  border-bottom:1px solid black;
-  -webkit-box-sizing: border-box;
-   -moz-box-sizing: border-box;
-        box-sizing: border-box;
-}
-.rsp{
-  width:100px;
-  height:100px;
-}
+<style media="screen">
+  #selection>g,g#confirm,g#cancel{
+    cursor: pointer;
+  }
+  input.betting{
+    position: absolute;
+    border:none;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+  }
 </style>
+<%= javascript_include_tag 'rock_scissors_paper/innersvg' %>
 <script>
-
+  $.ajax({
+    url: '<%= asset_path("rock_scissors_paper/playground.svg")%>',
+    type: 'get',
+    dataType: 'html',
+    success: function(data){
+      $("#svg").html(data)
+    }
+  })
+  .done(function() {
+    init()
+    $("#selection>g").click(function(event) {
+      var myselect = $("g#myselect")
+      var dx = 0
+      var dy = 0
+      dx = myselect.children("circle").attr("cx") - $(this).children("circle").attr("cx")
+      dy = myselect.children("circle").attr("cy") - $(this).children("circle").attr("cy")
+      if(myselect.attr("transform")){
+        dx = parseFloat(myselect.attr("transform").split(/ |(translate\()|\)/)[2]) + dx
+        dy = parseFloat(myselect.attr("transform").split(/ |(translate\()|\)/)[4]) + dy
+      }
+      myselect[0].innerHTML = this.innerHTML
+      myselect.attr("transform","translate("+dx+" "+dy+")")
+      do_betting()
+    });
+  })
+  function init(){
+    $("#submit").css("display","none")
+    $("#svg").append("<input type='number' class='betting'>");
+    position_input()
+    $( window ).resize(position_input)
+    $("input.betting").hide()
+    $("#cancel").click(cancel_betting);
+    function position_input(){
+      $("#svg").css("height",$("#svg").width()*9/16)
+      var position = $("#submit>.st11").position();
+      var height = $("#svg").height()*.1;
+      var width = $("#svg").width()*.3;
+      $("input.betting").css("left",position.left*1.01).css("top",position.top*1.01).css("height",height)
+      .css("width",width).css("font-size",height)
+    }
+  }
+  function do_betting(){
+    $("#selection").css("display","none")
+    $("#submit").css("display","")
+    $("input.betting").css("display","")
+  }
+  function cancel_betting(){
+    $("#selection").css("display","")
+    $("#submit").css("display","none")
+    $("input.betting").css("display","none")
+  }
 </script>
