@@ -126,7 +126,9 @@
 		<circle class="st14" cx="768" cy="218.2" r="98"/>
 	</g>
 	<text transform="matrix(1 0 0 1 254.29 57.79)" class="st8 st15">컴퓨터</text>
-	<text transform="matrix(1 0 0 1 715.6 57.79)" class="st8 st15">User Name</text>
+	<g id="username">
+		<text transform="matrix(1 0 0 1 715.6 57.79)" class="st8 st15">User Name</text>
+	</g>
 	<text transform="matrix(1 0 0 1 563.46 239.29)" class="st8 st15">VS</text>
 	<text transform="matrix(1 0 0 1 18.12 154.19)" class="st8 st16">보유 포인트: 5000</text>
 	<text transform="matrix(1 0 0 1 18.12 190.19)" class="st8 st16">오늘 전적:</text>

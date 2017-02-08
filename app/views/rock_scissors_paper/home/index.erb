@@ -1,4 +1,5 @@
 <h1>가위바위보</h1>
+<%=resource%>
 <div id="svg">
 </div>
 <style media="screen">
@@ -41,7 +42,8 @@
   })
   function init(){
     $("#submit").css("display","none")
-    $("#svg").append("<input type='number' class='betting'>");
+    $("g#username>text").html("<%=@current_user.username%>")
+    $("#svg").append("<input type='number' class='betting' min='1' max='5000'>");
     position_input()
     $( window ).resize(position_input)
     $("input.betting").hide()

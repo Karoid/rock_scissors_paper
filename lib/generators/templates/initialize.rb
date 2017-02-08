@@ -7,4 +7,9 @@ RockScissorsPaper.setup do |config|
   #you can bind route like [get 'my/route' => 'rock_scissors_paper/home#index'] in routes.rb
   #config.automatic_routes_mount = false
 
+  #if you want to use /app/veiws/layouts/application.html.erb, then set this value as true
+  #config.use_layout = true'
+
+  #default model used by RockScissorsPaper
+  config.default_model = <%= model_name.camelize %>
 end

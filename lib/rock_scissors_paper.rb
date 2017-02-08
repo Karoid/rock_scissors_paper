@@ -7,6 +7,12 @@ module RockScissorsPaper
   @@automatic_routes_mount = true
 
   mattr_accessor :user_model_name
+  @@user_model_name = 'user'
+
+  mattr_accessor :use_layout
+  @@use_layout = false
+
+  mattr_accessor :default_model
 
   def self.use_default_configuration!
     self.automatic_routes_mount             = true
