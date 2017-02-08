@@ -8,7 +8,12 @@ module RockScissorsPaper
   class HomeController
     before_action 'authenticate_'+RockScissorsPaper.user_model_name+'!'
     def index
-      @current_user = send('current_'+RockScissorsPaper.user_model_name) 
+      @current_user = send('current_'+RockScissorsPaper.user_model_name)
+      @my_record = RockScissorsPaper.default_model.where(user_id: @current_user.id).take
+      if !@my_record
+        @my_record = RockScissorsPaper.default_model.create(user_id: @current_user.id, point: RockScissorsPaper.initial_point)
+      end
+
     end
 
     def write

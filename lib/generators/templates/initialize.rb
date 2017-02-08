@@ -8,8 +8,11 @@ RockScissorsPaper.setup do |config|
   #config.automatic_routes_mount = false
 
   #if you want to use /app/veiws/layouts/application.html.erb, then set this value as true
-  #config.use_layout = true'
+  #config.use_layout = true
 
   #default model used by RockScissorsPaper
   config.default_model = <%= model_name.camelize %>
+
+  #first point when user start's this game first
+  #config.initial_point = 5000
 end

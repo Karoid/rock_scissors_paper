@@ -14,6 +14,9 @@ module RockScissorsPaper
 
   mattr_accessor :default_model
 
+  mattr_accessor :initial_point
+  @@initial_point = 5000
+
   def self.use_default_configuration!
     self.automatic_routes_mount             = true
     self.enabled                            = true
