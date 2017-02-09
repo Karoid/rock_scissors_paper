@@ -2,7 +2,7 @@
 <div id="svg">
 </div>
 <style media="screen">
-  #selection>g,g#confirm,g#cancel{
+  #selection>g,g#confirm,g#cancel,#result>g#init{
     cursor: pointer;
   }
   input.betting{
@@ -14,8 +14,20 @@
 </style>
 <%= javascript_include_tag 'rock_scissors_paper/innersvg' %>
 <script>
+var my_selection
+var myselect_html
+var question_html
+var ratio
+var url
+if(screen.width/screen.height > 1){
+  ratio = 9/16
+  url = '<%= asset_path("rock_scissors_paper/playground.svg")%>'
+}else {
+  ratio = 4/3
+  url = '<%= asset_path("rock_scissors_paper/playground_phone.svg")%>'
+}
   $.ajax({
-    url: '<%= asset_path("rock_scissors_paper/playground.svg")%>',
+    url: url,
     type: 'get',
     dataType: 'html',
     success: function(data){
@@ -24,47 +36,102 @@
   })
   .done(function() {
     init()
-    $("#selection>g").click(function(event) {
-      var myselect = $("g#myselect")
-      var dx = 0
-      var dy = 0
-      dx = myselect.children("circle").attr("cx") - $(this).children("circle").attr("cx")
-      dy = myselect.children("circle").attr("cy") - $(this).children("circle").attr("cy")
-      if(myselect.attr("transform")){
-        dx = parseFloat(myselect.attr("transform").split(/ |(translate\()|\)/)[2]) + dx
-        dy = parseFloat(myselect.attr("transform").split(/ |(translate\()|\)/)[4]) + dy
-      }
-      myselect[0].innerHTML = this.innerHTML
-      myselect.attr("transform","translate("+dx+" "+dy+")")
-      do_betting()
+    $("#selection>g").click(function(){
+      place_icon("g#myselect",this,do_betting)
     });
   })
   function init(){
+    myselect_html = $("g#myselect").html()
+    question_html = $("g#question").html()
     $("#submit").css("display","none")
+    $("#result").css("display","none")
     $("g#username>text").html("<%=@current_user.username%>")
     $("#my_point").html("<%=@my_record.point%>")
-    $("#svg").append("<input type='number' class='betting' min='1' max='5000'>");
+    $("#my_rate").html("<%=@my_record.win%>/<%=@my_record.lose%>")
+    $("#svg").append("<input type='number' class='betting' min='1'>");
     position_input()
     $( window ).resize(position_input)
     $("input.betting").hide()
     $("#cancel").click(cancel_betting);
+    $("#confirm").click(confirm)
     function position_input(){
-      $("#svg").css("height",$("#svg").width()*9/16)
-      var position = $("#submit>.st11").position();
+      $("#svg").css("height",$("#svg").width()*ratio)
+      var position = $("#submit>path").position();
       var height = $("#svg").height()*.1;
       var width = $("#svg").width()*.3;
       $("input.betting").css("left",position.left*1.01).css("top",position.top*1.01).css("height",height)
       .css("width",width).css("font-size",height)
+      if (screen.width/screen.height <= 1) {
+        height = $("#svg").height()*.08;
+        width = $("#svg").width()*.55;
+        $("input.betting").css("left",position.left*1.01).css("top",position.top*1.01).css("height",height)
+        .css("width",width).css("font-size",height)
+      }
     }
   }
+  function place_icon(place_element,this_element, callback) {
+    var myselect = $(place_element)
+    var dx = 0
+    var dy = 0
+    dx = myselect.children("circle").attr("cx") - $(this_element).children("circle").attr("cx")
+    dy = myselect.children("circle").attr("cy") - $(this_element).children("circle").attr("cy")
+    if(myselect.attr("transform")){
+      dx = parseFloat(myselect.attr("transform").split(/ |(translate\()|\)/)[2]) + dx
+      dy = parseFloat(myselect.attr("transform").split(/ |(translate\()|\)/)[4]) + dy
+    }
+    myselect[0].innerHTML = $(this_element).html()
+    my_selection = $(this_element).attr("id")
+    myselect.attr("transform","translate("+dx+" "+dy+")").hide().show(500)
+    callback()
+  }
   function do_betting(){
-    $("#selection").css("display","none")
-    $("#submit").css("display","")
-    $("input.betting").css("display","")
+    $("#selection").hide()
+    $("#submit").show(500)
+    $("input.betting").show()
   }
   function cancel_betting(){
-    $("#selection").css("display","")
-    $("#submit").css("display","none")
-    $("input.betting").css("display","none")
+    $("g#myselect").html(myselect_html).attr("transform","")
+    $("g#question").html(question_html).attr("transform","")
+    $("#selection").show(500)
+    $("#submit").hide()
+    $("input.betting").hide()
+    $("#result").hide()
+  }
+  function confirm(){
+    $.ajax({
+      url: 'fight',
+      type: 'get',
+      dataType: 'json',
+      data: {selection: my_selection, bet: $("input.betting").val()},
+      success: function(data){
+        console.log(data)
+        place_icon("g#question","g#"+data[1],function(){})
+        after_confirm(data)
+      },
+      error: function(){
+        alert("포인트가 모자랍니다")
+      }
+    })
+  }
+  function after_confirm(data){
+    $("#submit").hide()
+    $("#result").show(500)
+    $("#result>g").hide()
+    $("#result>g#init").show().click(cancel_betting);
+    switch (data[2]) {
+      case -1:
+        $("#lose").show()
+        break;
+      case 0:
+        $("#draw").show()
+        break;
+      case 1:
+        $("#win").show()
+        break;
+    }
+    $("input.betting").hide()
+    var my_record = data[0]
+    $("#my_point").html(my_record.point)
+    $("#my_rate").html(my_record.win+"/"+my_record.lose)
   }
 </script>

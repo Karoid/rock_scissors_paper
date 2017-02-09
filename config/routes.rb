@@ -1,6 +1,6 @@
 RockScissorsPaper::Engine.routes.draw do
   root :to => 'home#index'
-  get 'write' => 'home#write'
+  get 'fight' => 'home#fight'
 end
 
 if RockScissorsPaper.automatic_routes_mount

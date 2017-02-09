@@ -8,35 +8,40 @@ you need devise gem, and user model!
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rock_scissors_paper'
+gem 'rock_scissors_paper', :git => 'https://github.com/Karoid/rock_scissors_paper'
 ```
 
 And then execute:
 ```bash
 $ bundle
 ```
-Or install it yourself as:
-```bash
-$ gem install rock_scissor_papper
-```
-make database for rock_scissor_papper!
+then make database for rock_scissor_papper!
 ```bash
 $ rails g rock_scissors_paper MODEL
 ```
 this will make model for the game
 ## Usage
 
-TODO: Write usage instructions here
+아주 단순합니다. 위의 명령어를 쳐서 만든 /config/initializers/rock_scissors_paper.rb 파일에 설정을 수정하시면 됩니다.
+```ruby
+RockScissorsPaper.setup do |config|
+  #Devise 잼으로 만든 모델의 이름을 넣습니다
+  config.user_model_name = "user"
 
-## Development
+  #라우트를 수동으로 사용하고 싶으면 주석을 푸세요
+  #config.automatic_routes_mount = false
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+  #기존의 application layout을 사용하고 싶으시다면 주석을 푸세요
+  #config.use_layout = true
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
+  #여기는 건들 일이 거의 없을겁니다. 생성한 모델 클래스를 설정해줍니다.
+  config.default_model = Point
+end
+```
+조만간 점수를 추가하는 메소드와 차감하는 메소드를 추가할 예정입니다.
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rockScissorsPaper.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Karoid/rock_scissors_paper.
 
 
 ## License
