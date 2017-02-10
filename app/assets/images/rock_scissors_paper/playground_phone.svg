@@ -97,7 +97,7 @@
 			</g>
 		</g>
 		<rect x="596" y="1123.2" class="st1" width="541.6" height="123.8"/>
-		<text transform="matrix(1 0 0 1 627.8111 1214.8799)" class="st8 st6 st7">You Lost!</text>
+		<text transform="matrix(1 0 0 1 627.8111 1214.8799)" class="st8 st6 st7">You Lose!</text>
 	</g>
 	<g id="draw">
 		<g>
@@ -217,14 +217,14 @@
 		<rect x="599.5" y="1443.2" class="st9" width="600.5" height="156.8"/>
 		<text transform="matrix(1 0 0 1 812.2448 1552.8386)" class="st10 st11 st18">취소</text>
 	</g>
-	<text transform="matrix(1 0 0 1 746.0547 1167.3604)" class="st11 st19">포인트 베팅</text>
+	<text transform="matrix(1 0 0 1 746.0541 1167.3604)" class="st11 st19">포인트 베팅</text>
 	<path class="st20" d="M671.9,1205.1H86.8c-27.3,0-49.2-22.1-49.2-49.2v-38.6c0-27.3,22.1-49.2,49.2-49.2H672
 		c27.3,0,49.2,22.1,49.2,49.2v38.6C721.3,1183,699.2,1205.1,671.9,1205.1z"/>
 </g>
 <g id="ui">
-	<text transform="matrix(1 0 0 1 170.1345 150.2895)" class="st11 st21">컴퓨터</text>
+	<text transform="matrix(1 0 0 1 168.5749 150.2895)" class="st11 st21">컴퓨터</text>
 	<g id="username">
-		<text transform="matrix(1 0 0 1 709.1414 150.2898)" class="st11 st21">Name</text>
+		<text transform="matrix(1 0 0 1 704.8826 150.2898)" class="st11 st21">Name</text>
 	</g>
 	<g id="question">
 		<circle class="st22" cx="330.7" cy="410.1" r="197.9"/>
@@ -235,10 +235,10 @@
 	<g id="myselect">
 		<circle class="st24" cx="872.4" cy="410.1" r="197.9"/>
 	</g>
-	<text transform="matrix(1 0 0 1 564.8245 431.29)" class="st11 st25">VS</text>
-	<text id="my_rate" transform="matrix(1 0 0 1 892.4869 796.4158)" class="st11 st26">10%</text>
-	<text id="my_point" transform="matrix(1 0 0 1 892.4868 696.416)" class="st11 st26">5000</text>
-	<text transform="matrix(1 0 0 1 456.5911 696.4158)" class="st11 st26">보유 포인트: </text>
-	<text transform="matrix(1 0 0 1 456.5911 788.4158)" class="st11 st26">총 전적:</text>
+	<text transform="matrix(1 0 0 1 561.015 431.29)" class="st11 st25">VS</text>
+	<text id="my_rate" transform="matrix(1 0 0 1 856.4864 788.4155)" class="st11 st26">10%</text>
+	<text id="my_point" transform="matrix(1 0 0 1 856.4869 696.416)" class="st11 st26">5000</text>
+	<text transform="matrix(1 0 0 1 389.1672 696.4158)" class="st11 st26">보유 포인트: </text>
+	<text transform="matrix(1 0 0 1 541.8469 788.4158)" class="st11 st26">총 전적:</text>
 </g>
 </svg>

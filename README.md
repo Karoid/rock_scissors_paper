@@ -5,6 +5,7 @@ you need devise gem, and user model!
 
 ## Installation
 
+This gem is dependent to devise gem. If you don't, [please install it](https://github.com/plataformatec/devise).
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -20,7 +21,7 @@ then make database for rock_scissor_papper!
 $ rails g rock_scissors_paper MODEL
 ```
 this will make model for the game
-## Usage
+## Customization
 
 아주 단순합니다. 위의 명령어를 쳐서 만든 /config/initializers/rock_scissors_paper.rb 파일에 설정을 수정하시면 됩니다.
 ```ruby
@@ -39,6 +40,19 @@ RockScissorsPaper.setup do |config|
 end
 ```
 조만간 점수를 추가하는 메소드와 차감하는 메소드를 추가할 예정입니다.
+
+## Usage
+Want to change points? Use these methods
+```ruby
+change_points(points)
+#=> change current user point as much as you put number (can put negetive number)
+set_points(points)
+#=> set current user point as much as you put number (cannot put negetive number)
+```
+Want to check points? Use this
+```ruby
+current_points #=> return current user point
+```
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/Karoid/rock_scissors_paper.

@@ -38,4 +38,5 @@ end
 
 require "rock_scissors_paper/version"
 require "rock_scissors_paper/engine"
+require_relative "../app/helpers/rock_scissors_paper/point_helper"
 require_relative "rails/routes"

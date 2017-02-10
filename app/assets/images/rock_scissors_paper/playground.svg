@@ -92,7 +92,7 @@
 			</g>
 		</g>
 		<rect x="450.8" y="431.3" class="st1" width="298.3" height="68.2"/>
-		<text transform="matrix(1 0 0 1 468.3608 481.8305)" class="st8 st6 st7">You Lost!</text>
+		<text transform="matrix(1 0 0 1 468.3608 481.8305)" class="st8 st6 st7">You Lose!</text>
 	</g>
 	<g id="draw">
 		<g>
@@ -201,18 +201,18 @@
 </g>
 <g id="submit">
 	<g id="confirm">
-		<path class="st17" d="M828.9,515.8h77.5c12.3,0,22.3-10,22.3-22.3v-31.9c0-12.3-10-22.3-22.3-22.3h-77.5
-			c-12.3,0-22.3,10-22.3,22.3v31.9C806.7,505.9,816.7,515.8,828.9,515.8z"/>
-		<text transform="matrix(1 0 0 1 824.8722 492.7898)" class="st10 st11 st12">확인</text>
+		<path class="st17" d="M720.5,515.8h158.2c14.5,0,26.3-11.8,26.3-26.3v-23.9c0-14.5-11.8-26.3-26.3-26.3H720.5
+			c-14.5,0-26.3,11.8-26.3,26.3v23.9C694.2,504.1,705.9,515.8,720.5,515.8z"/>
+		<text transform="matrix(1 0 0 1 756.7849 492.7898)" class="st10 st11 st12">확인</text>
 	</g>
 	<g id="cancel">
-		<path class="st9" d="M975.1,515.8h69.4c14.5,0,26.3-11.8,26.3-26.3v-23.9c0-14.5-11.8-26.3-26.3-26.3h-69.4
-			c-14.5,0-26.3,11.8-26.3,26.3v23.9C948.8,504.1,960.5,515.8,975.1,515.8z"/>
-		<text transform="matrix(1 0 0 1 969.5403 492.7903)" class="st10 st11 st12">취소</text>
+		<path class="st9" d="M960.8,515.8H1119c14.5,0,26.3-11.8,26.3-26.3v-23.9c0-14.5-11.8-26.3-26.3-26.3H960.8
+			c-14.5,0-26.3,11.8-26.3,26.3v23.9C934.5,504.1,946.2,515.8,960.8,515.8z"/>
+		<text transform="matrix(1 0 0 1 997.1272 492.7903)" class="st10 st11 st12">취소</text>
 	</g>
-	<text transform="matrix(1 0 0 1 538.29 492.7902)" class="st11 st12">포인트 베팅</text>
-	<path class="st18" d="M497,513.8H171c-15.2,0-27.4-12.3-27.4-27.4v-21.5c0-15.2,12.3-27.4,27.4-27.4h326
-		c15.2,0,27.4,12.3,27.4,27.4v21.5C524.5,501.5,512.2,513.8,497,513.8z"/>
+	<text transform="matrix(1 0 0 1 449.3473 492.7902)" class="st11 st12">포인트 베팅</text>
+	<path class="st18" d="M408.1,513.8h-326c-15.2,0-27.4-12.3-27.4-27.4v-21.5c0-15.2,12.3-27.4,27.4-27.4h326
+		c15.2,0,27.4,12.3,27.4,27.4v21.5C435.6,501.5,423.3,513.8,408.1,513.8z"/>
 </g>
 <g id="ui">
 	<g id="question">
@@ -224,14 +224,14 @@
 	<g id="myselect">
 		<circle class="st21" cx="768" cy="218.2" r="98"/>
 	</g>
-	<text transform="matrix(1 0 0 1 254.29 57.79)" class="st11 st7">컴퓨터</text>
+	<text transform="matrix(1 0 0 1 219.7202 57.79)" class="st11 st7">컴퓨터</text>
 	<g id="username">
-		<text transform="matrix(1 0 0 1 715.6 57.79)" class="st11 st7">User Name</text>
+		<text transform="matrix(1 0 0 1 748.2614 57.79)" class="st11 st7">User Name</text>
 	</g>
-	<text transform="matrix(1 0 0 1 563.46 239.29)" class="st11 st7">VS</text>
-	<text id="my_rate" transform="matrix(1 0 0 1 1062.7301 241.496)" class="st11 st22">10%</text>
-	<text id="my_point" transform="matrix(1 0 0 1 1062.7303 205.4959)" class="st11 st22">5000</text>
-	<text transform="matrix(1 0 0 1 903.5004 205.4958)" class="st11 st22">보유 포인트: </text>
-	<text transform="matrix(1 0 0 1 903.5004 241.4958)" class="st11 st22">총 전적:</text>
+	<text transform="matrix(1 0 0 1 563.3704 239.29)" class="st11 st7">VS</text>
+	<text id="my_rate" transform="matrix(1 0 0 1 1047.7301 241.496)" class="st11 st22">10%</text>
+	<text id="my_point" transform="matrix(1 0 0 1 1047.7303 205.4959)" class="st11 st22">5000</text>
+	<text transform="matrix(1 0 0 1 882.351 205.4958)" class="st11 st22">보유 포인트: </text>
+	<text transform="matrix(1 0 0 1 942.5908 241.4958)" class="st11 st22">총 전적:</text>
 </g>
 </svg>
