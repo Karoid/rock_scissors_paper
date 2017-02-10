@@ -20,10 +20,14 @@ then make database for rock_scissor_papper!
 ```bash
 $ rails g rock_scissors_paper MODEL
 ```
-this will make model for the game
+this will make migration file for the game points
+```bash
+$ rake db:migrate
+```
+then you can do your game in route "/game/rsp"
 ## Customization
 
-아주 단순합니다. 위의 명령어를 쳐서 만든 /config/initializers/rock_scissors_paper.rb 파일에 설정을 수정하시면 됩니다.
+설정을 바꾸고 싶으시다면 위의 명령어를 쳐서 만든 /config/initializers/rock_scissors_paper.rb 파일에 설정을 수정하시면 됩니다.
 ```ruby
 RockScissorsPaper.setup do |config|
   #Devise 잼으로 만든 모델의 이름을 넣습니다
