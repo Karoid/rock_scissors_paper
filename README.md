@@ -41,6 +41,12 @@ RockScissorsPaper.setup do |config|
 
   #여기는 건들 일이 거의 없을겁니다. 생성한 모델 클래스를 설정해줍니다.
   config.default_model = Point
+
+  #공지사항이 있으면 여기에 url 주소를 적으면 공지 보기라는 링크가 생성됩니다
+  #config.notice_route = "/game/notice"
+
+  #처음 게임하게 될때 지급할 포인트를 설정합니다.
+  #config.initial_point = 5000
 end
 ```
 조만간 점수를 추가하는 메소드와 차감하는 메소드를 추가할 예정입니다.

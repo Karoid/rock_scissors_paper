@@ -17,6 +17,9 @@ module RockScissorsPaper
   mattr_accessor :initial_point
   @@initial_point = 5000
 
+  mattr_accessor :notice_route
+  @@notice_route = nil
+
   def self.use_default_configuration!
     self.automatic_routes_mount             = true
     self.enabled                            = true

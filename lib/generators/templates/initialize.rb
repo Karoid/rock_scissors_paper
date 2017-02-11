@@ -13,6 +13,9 @@ RockScissorsPaper.setup do |config|
   #default model used by RockScissorsPaper
   config.default_model = <%= model_name.camelize %>
 
+  #if you need to notice playing this game, I recommend put notice written url
+  #config.notice_route = "/game/notice"
+
   #first point when user start's this game first
   #config.initial_point = 5000
 end

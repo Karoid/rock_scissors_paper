@@ -21,7 +21,7 @@ module RockScissorsPaper
       @my_record = RockScissorsPaper.default_model.where(user_id: @current_user.id).take
       if @my_record.point < params[:bet].to_i || params[:bet].to_i < 0
         respond_to do |format|
-          format.json { render json: [@my_record.attributes,arr[com_sel],2] }
+          format.json { render json: [@my_record.attributes,nil,2] }
         end
         return 0
       end

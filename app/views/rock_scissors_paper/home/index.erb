@@ -1,4 +1,4 @@
-<h1>가위바위보</h1>
+<h1>가위바위보<%if RockScissorsPaper.notice_route%> <a href="<%=RockScissorsPaper.notice_route%>">[공지 보기]</a><%end%></h1>
 <div id="svg">
 </div>
 <style media="screen">
@@ -82,12 +82,11 @@ if(screen.width/screen.height > 1){
   }
   function confirm(){
     $.ajax({
-      url: 'fight',
+      url: window.location.pathname+'/fight',
       type: 'get',
       dataType: 'json',
       data: {selection: my_selection, bet: $("input.betting").val()},
       success: function(data){
-        place_icon("g#question","g#"+data[1],function(){})
         after_confirm(data)
       },
       error: function(){
@@ -100,9 +99,21 @@ if(screen.width/screen.height > 1){
     $("#submit").hide()
     $("#result>g").hide()
     $("#result>g#init").show()
+    $("input.betting").hide()
+    //data[0] : data of current_user point
+    //data[1] : computer's selection of rock_scissors_paper
+    //data[2] : status of the game.
+      // data[2] = -1 : lose
+      // data[2] = 0 : draw
+      // data[2] = 1 : win
+      // data[2] = 2 : no point
+    if (data[1]) {
+      place_icon("g#question","g#"+data[1],function(){})
+    }
     switch (data[2]) {
       case -1:
         $("#lose").show()
+        $("#lose>text").html("You Lose!")
         break;
       case 0:
         $("#draw").show()
@@ -110,8 +121,12 @@ if(screen.width/screen.height > 1){
       case 1:
         $("#win").show()
         break;
+      case 2:
+        $("#lose").show()
+        $("#lose>text").html("No point!")
+        $('input.betting').val("")
+        break;
     }
-    $("input.betting").hide()
     var my_record = data[0]
     $("#my_point").html(my_record.point)
     $("#my_rate").html(my_record.win+"/"+my_record.lose)
