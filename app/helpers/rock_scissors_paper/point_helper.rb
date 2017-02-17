@@ -27,6 +27,16 @@ module RockScissorsPaper
       return RockScissorsPaper.default_model.where(user_id: @current_user.id).take.point
     end
 
+    def current_user_name_by_id(user_id)
+      user_record = RockScissorsPaper.user_model_name.camelize.constantize.find(user_id)
+      if user_record
+        if user_record.username
+          user_record.username
+        else
+          user_record.email
+        end
+      end
+    end
     private
 
     def init_point

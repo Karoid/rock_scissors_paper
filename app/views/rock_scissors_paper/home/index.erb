@@ -1,4 +1,14 @@
 <h1>가위바위보<%if RockScissorsPaper.notice_route%> <a href="<%=RockScissorsPaper.notice_route%>">[공지 보기]</a><%end%></h1>
+<div class="rank">
+  <%for i in 0...@rank_record.length%>
+    <div class="col-xs-6 col-sm-4">
+      <%=i+1%>위 <%=@rank_name[i]%> <%=@rank_point[i]%>
+    </div>
+  <%end%>
+  <div class="col-xs-6 col-sm-4">
+    내 순위: <%=@my_rank%>위
+  </div>
+</div>
 <div id="svg">
 </div>
 <style media="screen">
@@ -11,6 +21,8 @@
     background-color: rgba(0, 0, 0, 0);
     text-align: center;
   }
+  h1{font-size: 4vh;}
+  .rank{font-size: 3vh;margin:0;height: 3.5vh;line-height: 3.5vh;overflow: hidden;}
 </style>
 <%= javascript_include_tag 'rock_scissors_paper/innersvg' %>
 <script>
@@ -40,7 +52,7 @@ if(screen.width/screen.height > 1){
     question_html = $("g#question").html()
     $("#submit").hide()
     $("#result").hide()
-    $("g#username>text").html("<%=@current_user.username%>")
+    $("g#username>text").html("<%=current_user_name_by_id(@current_user.id)%>")
     $("#my_point").html("<%=@my_record.point%>")
     $("#my_rate").html("<%=@my_record.win%>/<%=@my_record.lose%>")
     $("#svg").append("<input type='number' class='betting' min='1'>");
@@ -152,4 +164,21 @@ if(screen.width/screen.height > 1){
       .css("width",width).css("font-size",height)
     }
   }
+</script>
+<script type="text/javascript">
+var scroll = 0
+$(".rank").scrollTop(10000)
+var max_scroll = $(".rank").scrollTop()
+var lines = Math.floor(max_scroll/$(".rank").height())
+scroll = max_scroll
+setInterval(function(){
+  $(".rank").scrollTop(scroll + max_scroll/lines)
+  console.log("real_scroll:" + $(".rank").scrollTop(),"current_Scroll:" + scroll,max_scroll,$(".rank").height(), lines)
+  if ($(".rank").scrollTop() < scroll) {
+    $(".rank").scrollTop(0)
+    scroll = 0
+  }else {
+    scroll += max_scroll/lines
+  }
+},2000)
 </script>

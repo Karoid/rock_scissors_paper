@@ -14,6 +14,13 @@ module RockScissorsPaper
         @my_record = RockScissorsPaper.default_model.create(user_id: @current_user.id, point: RockScissorsPaper.initial_point)
       end
 
+      #get rank record
+      raw_rank = RockScissorsPaper.default_model.order(point: :desc)
+      @rank_record = raw_rank.limit(3)
+      @my_rank = raw_rank.pluck(:user_id).index(@current_user.id)
+      @rank_point = @rank_record.map { |x| x.point }
+      @rank_name = @rank_record.map { |x| current_user_name_by_id(x.user_id) }
+
     end
 
     def fight
