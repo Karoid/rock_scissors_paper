@@ -6,7 +6,7 @@
     </div>
   <%end%>
   <div class="col-xs-6 col-sm-4">
-    내 순위: <%=@my_rank%>위
+    내 순위: <%=@my_rank+1%>위
   </div>
 </div>
 <div id="svg">
@@ -64,6 +64,7 @@ if(screen.width/screen.height > 1){
   function initialize_click_events(){
     $("#selection>g").click(function(){
       place_icon("g#myselect",this,do_betting)
+      set_input_position()
     });
     $("#cancel").click(cancel_betting);
     $("#confirm").click(confirm)
