@@ -24,7 +24,7 @@
     background-color: rgba(0, 0, 0, 0);
     text-align: center;
   }
-  h1{font-size: 4vh;}
+  h1{font-size: 3.5vh;}
   .rank{font-size: 3vh;margin:0;height: 3.5vh;line-height: 3.5vh;overflow: hidden;}
   .popup{overflow: scroll;text-align: center;position: absolute;width: 100%;max-width: 500px;height: 500px;left: 50%;top: 10%;margin-left: -250px;background: white;border: 1px solid gray;border-radius: 25px;}
   .popup table{width:80%;margin:20px auto}
@@ -76,7 +76,7 @@ if(screen.width/screen.height > 1){
       set_input_position()
     });
     $("#cancel").click(cancel_betting);
-    $("#confirm").click(confirm)
+    $("#confirm").click(rcp_confirm)
     $("#result>g#init").click(cancel_betting);
     $("#show_rank").click(popup_rank)
   }
@@ -103,7 +103,7 @@ if(screen.width/screen.height > 1){
     $("input.betting").hide()
     $("#result").hide()
   }
-  function confirm(){
+  function rcp_confirm(){
     $.ajax({
       url: window.location.pathname+'/fight',
       type: 'get',
@@ -181,6 +181,7 @@ if(screen.width/screen.height > 1){
         var i = 1
         $.each(data,function(key, value){
           html += '<tr><td>'+i+'</td><td>'+key+'</td><td>'+value+'</td></tr>'
+          i++
         })
         html +='</tbody></table><a href="javascript:" class="close_rank">닫기</a></div>'
         $('body').append(html)
