@@ -1,4 +1,7 @@
-<h1>가위바위보<%if RockScissorsPaper.notice_route%> <a href="<%=RockScissorsPaper.notice_route%>">[공지 보기]</a><%end%></h1>
+<h1>가위바위보
+  <%if RockScissorsPaper.notice_route%> <a href="<%=RockScissorsPaper.notice_route%>">[공지 보기]</a><%end%>
+  <a href="javascript:" id='show_rank'>[순위 보기]</a>
+</h1>
 <div class="rank">
   <%for i in 0...@rank_record.length%>
     <div class="col-xs-6 col-sm-4">
@@ -23,6 +26,12 @@
   }
   h1{font-size: 4vh;}
   .rank{font-size: 3vh;margin:0;height: 3.5vh;line-height: 3.5vh;overflow: hidden;}
+  .popup{overflow: scroll;text-align: center;position: absolute;width: 100%;max-width: 500px;height: 500px;left: 50%;top: 10%;margin-left: -250px;background: white;border: 1px solid gray;border-radius: 25px;}
+  .popup table{width:80%;margin:20px auto}
+  .popup th {text-align: center}
+  @media screen and (max-aspect-ratio: 1/1) {
+    .popup{left: auto; top:20%; margin:auto}
+  }
 </style>
 <%= javascript_include_tag 'rock_scissors_paper/innersvg' %>
 <script>
@@ -69,6 +78,7 @@ if(screen.width/screen.height > 1){
     $("#cancel").click(cancel_betting);
     $("#confirm").click(confirm)
     $("#result>g#init").click(cancel_betting);
+    $("#show_rank").click(popup_rank)
   }
   function place_icon(place_element,this_element, callback) {
     var myselect = $(place_element)
@@ -113,13 +123,6 @@ if(screen.width/screen.height > 1){
     $("#result>g").hide()
     $("#result>g#init").show()
     $("input.betting").hide()
-    //data[0] : data of current_user point
-    //data[1] : computer's selection of rock_scissors_paper
-    //data[2] : status of the game.
-      // data[2] = -1 : lose
-      // data[2] = 0 : draw
-      // data[2] = 1 : win
-      // data[2] = 2 : no point
     if (data[1]) {
       place_icon("g#question","g#"+data[1],function(){})
     }
@@ -165,6 +168,31 @@ if(screen.width/screen.height > 1){
       .css("width",width).css("font-size",height)
     }
   }
+
+  function popup_rank(){
+    $.ajax({
+      url: window.location.pathname+'/rank',
+      type: 'post',
+      dataType: 'json',
+      success: function(data){
+        var html = '<div class="popup"><table>'
+        + '<thead><tr><th>순위</th><th>구분</th><th>점수</th></tr></thead>'
+        + '<tbody>'
+        var i = 1
+        $.each(data,function(key, value){
+          html += '<tr><td>'+i+'</td><td>'+key+'</td><td>'+value+'</td></tr>'
+        })
+        html +='</tbody></table><a href="javascript:" class="close_rank">닫기</a></div>'
+        $('body').append(html)
+        $('.close_rank').click(function(){
+          $(this).parent().remove()
+        })
+      },
+      error: function(err){
+        console.log("err",err)
+      }
+    })
+  }
 </script>
 <script type="text/javascript">
 var scroll = 0
@@ -174,7 +202,6 @@ var lines = Math.floor(max_scroll/$(".rank").height())
 scroll = max_scroll
 setInterval(function(){
   $(".rank").scrollTop(scroll + max_scroll/lines)
-  console.log("real_scroll:" + $(".rank").scrollTop(),"current_Scroll:" + scroll,max_scroll,$(".rank").height(), lines)
   if ($(".rank").scrollTop() < scroll) {
     $(".rank").scrollTop(0)
     scroll = 0

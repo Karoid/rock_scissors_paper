@@ -19,8 +19,7 @@ module RockScissorsPaper
       @rank_record = raw_rank.limit(3)
       @my_rank = raw_rank.pluck(:user_id).index(@current_user.id)
       @rank_point = @rank_record.map { |x| x.point }
-      @rank_name = @rank_record.map { |x| current_user_name_by_id(x.user_id) }
-
+      @rank_name = @rank_record.map { |x| current_user_name_by_id(x.user_id) if current_user_name_by_id(x.user_id) }
     end
 
     def fight
@@ -53,6 +52,17 @@ module RockScissorsPaper
       end
       respond_to do |format|
         format.json { render json: [@my_record.attributes,arr[com_sel],result] }
+      end
+    end
+
+    def rank
+      @rank = Hash.new
+      raw = RockScissorsPaper.default_model.order(point: :desc)
+      raw.each do |x|
+        @rank[current_user_name_by_id(x.user_id)] = x.point
+      end
+      respond_to do |format|
+        format.json { render json: @rank }
       end
     end
 
