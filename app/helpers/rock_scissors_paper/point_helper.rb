@@ -28,13 +28,15 @@ module RockScissorsPaper
     end
 
     def current_user_name_by_id(user_id)
-      user_record = RockScissorsPaper.user_model_name.camelize.constantize.find(user_id)
+      user_record = RockScissorsPaper.user_model_name.camelize.constantize.where(id:user_id)[0]
       if user_record
         if user_record.username
           user_record.username
         else
           user_record.email
         end
+      else
+        user_record = "Undefined"
       end
     end
     private
