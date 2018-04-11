@@ -160,7 +160,10 @@ if(screen.width/screen.height > 1){
     var height = $("#svg").height()*.1;
     var width = $("#svg").width()*.3;
     $("input.betting").css("left",position.left*1.01).css("top",position.top*1.01).css("height",height)
-    .css("width",width).css("font-size",height)
+    .css("width",width).css("font-size",height).focus()
+    $("#cancel ~ *").click(function(event) {
+      $("input.betting").focus();
+    });
     if (screen.width/screen.height <= 1) {
       height = $("#svg").height()*.08;
       width = $("#svg").width()*.55;
