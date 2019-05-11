@@ -6,7 +6,7 @@ module RockScissorsPaper
   end
 
   class HomeController
-    before_action 'authenticate_'+RockScissorsPaper.user_model_name+'!'
+    before_action ('authenticate_'+RockScissorsPaper.user_model_name+'!').to_sym
     def index
       @current_user = send('current_'+RockScissorsPaper.user_model_name)
       @my_record = RockScissorsPaper.default_model.where(user_id: @current_user.id).take
