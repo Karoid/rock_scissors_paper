@@ -6,7 +6,7 @@ module RockScissorsPaper
   end
 
   class HomeController
-    before_action :authenticate
+    before_action ('authenticate_'+RockScissorsPaper.user_model_name+'!').to_sym
     def index
       @current_user = send('current_'+RockScissorsPaper.user_model_name)
       @my_record = RockScissorsPaper.default_model.where(user_id: @current_user.id).take
@@ -66,9 +66,6 @@ module RockScissorsPaper
       end
     end
 
-    def authenticate
-      send 'authenticate_'+RockScissorsPaper.user_model_name+'!'
-    end
 
   end
 end
