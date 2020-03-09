@@ -49,7 +49,7 @@ module RockScissorsPaper
   end
 
 
-  ActiveSupport.on_load(:action_controller) do
+  ActiveSupport.on_load(:action_controller_base) do
     helper RockScissorsPaper::PointHelper
     #밑에 줄을 포함하면 controller 상에서 함수를 사용할 수 있게 됩니다
     include RockScissorsPaper::PointHelper

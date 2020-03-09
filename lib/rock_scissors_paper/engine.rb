@@ -3,8 +3,8 @@ module RockScissorsPaper
     isolate_namespace RockScissorsPaper
     config.autoload_paths += Dir["#{config.root}/lib"]
 
-    initializer 'any_login.assets_precompile', :group => :all do |app|
-      app.config.assets.precompile += ['rock_scissors_paper/*']
+    initializer 'rock_scissors_paper.assets.precompile', :group => :all do |app|
+      app.config.assets.precompile += ['rock_scissors_paper/manifest.js']
     end
   end
 end
